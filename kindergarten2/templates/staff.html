@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+{% block content %}
+    <section class="banner-area relative about-banner" id="home">
+        <div class="overlay overlay-bg"></div>
+        <div class="container">
+            <div class="row d-flex align-items-center justify-content-center">
+                <div class="about-content col-lg-12">
+                    <h1 class="text-white">
+                        Staff
+                    </h1>
+                    <p class="text-white link-nav"><a href="index.html">Home </a> <span
+                            class="lnr lnr-arrow-right"></span> <a href="courses.html"> Staff</a></p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- End banner Area -->
+
+			<!-- Start popular-courses Area -->
+    <section class="popular-courses-area section-gap courses-page">
+        <div class="container">
+            <div class="row d-flex justify-content-center">
+                <div class="menu-content pb-70 col-lg-8">
+                    <div class="title text-center">
+                        <h1 class="mb-10">Our Specialists</h1>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                {% for i in object_list %}
+                <div class="single-popular-carusel col-lg-3 col-md-6">
+                    <div class="thumb-wrap relative">
+                        <div class="thumb relative">
+                            <div class="overlay overlay-bg"></div>
+                            <img class="img-fluid" src="{{ i.image.url }}" alt="">
+                        </div>
+                    </div>
+                    <div class="details">
+                        <a href="course-details.html">
+                            <h4>
+                                {{ i.name }}
+                            </h4>
+                        </a>
+                        <p>
+                            {{ i.position }}
+                        </p>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+{% endblock %}

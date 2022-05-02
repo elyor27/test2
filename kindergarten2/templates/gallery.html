@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+{% block content %}
+			<!-- start banner Area -->
+			<section class="banner-area relative about-banner" id="home">	
+				<div class="overlay overlay-bg"></div>
+				<div class="container">				
+					<div class="row d-flex align-items-center justify-content-center">
+						<div class="about-content col-lg-12">
+							<h1 class="text-white">
+								Gallery				
+							</h1>	
+							<p class="text-white link-nav"><a href="index.html">Home </a>  <span class="lnr lnr-arrow-right"></span>  <a href="gallery.html"> Gallery</a></p>
+						</div>	
+					</div>
+				</div>
+			</section>
+			<!-- End banner Area -->	
+				
+			<!-- Start gallery Area -->
+    <section class="gallery-area section-gap">
+        <div class="container">
+            <div class="row">
+                {% for i in object_list %}
+                    <div class="item col-sm-6 col-md-4 col-lg-3">
+                        <a href="{{ i.image.url }}" class="fancybox" data-fancybox="gallery1">
+                            <img src="{{ i.image.url }}" alt="{{ i.text }}" width="100%" height="100%"
+                                 class="img-fluid">
+                        </a>
+                        <h3> {{ i.text }} </h3>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+    <div class="row ">
+        <div class="col-lg-2 offset-5">
+            <ul class="pagination text-center">
+                {% for page in page_obj.paginator.page_range %}
+                    <li class="page-item {% if page == page_obj.number %}active{% endif %}"><a class="page-link"
+                                                                                               href="?page={{ page }}">{{ page }}</a>
+                    </li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+
+{% endblock %}
